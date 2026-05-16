@@ -1,0 +1,26 @@
+{
+  "name": "emdi-monorepo",
+  "private": true,
+  "version": "0.0.0",
+  "description": "A focused markdown editor with per-pane zoom, light/dark themes, and side-by-side preview. Ships as a Tauri standalone and a VS Code extension.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/icereci/emdi.git"
+  },
+  "packageManager": "pnpm@9.15.4",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck",
+    "lint": "turbo run lint",
+    "desktop:dev": "pnpm --filter @emdi/desktop tauri:dev",
+    "desktop:build": "pnpm --filter @emdi/desktop tauri:build",
+    "vscode:package": "pnpm --filter @emdi/vscode package"
+  },
+  "devDependencies": {
+    "turbo": "^2.3.0",
+    "typescript": "^5.6.0"
+  }
+}

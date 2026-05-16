@@ -1,0 +1,41 @@
+/*
+ * VS Code theme bridge — maps the design's variable namespace (--bg, --fg,
+ * --accent, etc., as defined in @emdi/ui/styles.css on .emdi-root) to
+ * VS Code's webview-injected --vscode-* variables, so the preview inherits
+ * VS Code's active workbench theme.
+ *
+ * Loaded only by the VS Code webview, applied after styles.css to override
+ * both the dark default and the [data-theme="light"] block.
+ */
+
+.emdi-root,
+.emdi-root[data-theme="dark"],
+.emdi-root[data-theme="light"] {
+  --bg: var(--vscode-editor-background);
+  --bg-elev: var(--vscode-editorWidget-background, var(--vscode-editor-background));
+  --bg-soft: var(--vscode-input-background, var(--vscode-editor-background));
+  --panel: var(--vscode-sideBar-background, var(--vscode-editor-background));
+  --border: var(--vscode-panel-border, var(--vscode-input-border, transparent));
+  --border-soft: var(--vscode-widget-border, transparent);
+
+  --fg: var(--vscode-editor-foreground);
+  --fg-soft: var(--vscode-foreground);
+  --fg-mute: var(--vscode-descriptionForeground);
+
+  --accent: var(--vscode-textLink-foreground);
+  --accent-soft: color-mix(in oklch, var(--vscode-textLink-foreground) 14%, transparent);
+  --selection: color-mix(in oklch, var(--vscode-textLink-foreground) 28%, transparent);
+
+  --code-bg: var(--vscode-textCodeBlock-background, var(--vscode-editor-background));
+  --code-fg: var(--vscode-editor-foreground);
+  --hr: var(--vscode-widget-border, var(--vscode-panel-border));
+  --kbd: var(--vscode-input-background);
+  --rule: var(--vscode-widget-border, var(--vscode-panel-border));
+
+  --danger: var(--vscode-errorForeground);
+  --success: var(--vscode-charts-green, #98c379);
+  --warning: var(--vscode-charts-yellow, #e5c07b);
+
+  --shadow: var(--vscode-widget-shadow, 0 8px 28px rgba(0, 0, 0, 0.45));
+  --highlight: color-mix(in oklch, var(--vscode-editor-findMatchHighlightBackground, #e5c07b) 35%, transparent);
+}

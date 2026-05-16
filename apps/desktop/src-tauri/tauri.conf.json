@@ -1,0 +1,35 @@
+{
+  "$schema": "https://schema.tauri.app/config/2.0.0",
+  "productName": "emdi",
+  "version": "0.0.0",
+  "identifier": "dev.emdi.app",
+  "build": {
+    "beforeDevCommand": "pnpm dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "pnpm build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "emdi",
+        "width": 1100,
+        "height": 720,
+        "minWidth": 600,
+        "minHeight": 400,
+        "resizable": true
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/icon.png"
+    ]
+  },
+  "plugins": {}
+}

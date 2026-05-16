@@ -1,0 +1,75 @@
+{
+  "name": "emdi-vscode",
+  "displayName": "emdi — Markdown Preview",
+  "description": "Side-by-side markdown preview with independent per-pane zoom. Inherits VS Code's theme.",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "publisher": "emdi",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/icereci/emdi.git",
+    "directory": "apps/vscode"
+  },
+  "engines": {
+    "vscode": "^1.92.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": [],
+  "main": "./dist/extension.cjs",
+  "contributes": {
+    "commands": [
+      {
+        "command": "emdi.openPreview",
+        "title": "Emdi: Open Preview",
+        "category": "Emdi",
+        "icon": "$(open-preview)"
+      },
+      {
+        "command": "emdi.openPreviewToSide",
+        "title": "Emdi: Open Preview to the Side",
+        "category": "Emdi",
+        "icon": "$(open-preview)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "emdi.openPreviewToSide",
+          "when": "editorLangId == markdown",
+          "group": "navigation"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "emdi.openPreviewToSide",
+        "key": "ctrl+k v",
+        "mac": "cmd+k v",
+        "when": "editorLangId == markdown"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json --noEmit && node esbuild.config.mjs",
+    "watch": "node esbuild.config.mjs --watch",
+    "package": "pnpm build && vsce package --no-dependencies",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@emdi/core": "workspace:*",
+    "@emdi/ui": "workspace:*",
+    "katex": "^0.16.11",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "@types/vscode": "^1.92.0",
+    "@vscode/vsce": "^3.0.0",
+    "esbuild": "^0.24.0",
+    "typescript": "^5.6.0"
+  }
+}
